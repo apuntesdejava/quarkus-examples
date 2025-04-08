@@ -1,0 +1,13 @@
+quarkus:
+  datasource:
+    jdbc:
+      url: jdbc:mysql://localhost:3307/example
+    username: example
+    password: example
+    db-kind: mysql
+  hibernate-orm:
+    log:
+      sql: true
+    database:
+      generation: update
+    sql-load-script: create-tables.sql

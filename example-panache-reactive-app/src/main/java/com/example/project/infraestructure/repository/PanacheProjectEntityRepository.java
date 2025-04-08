@@ -1,0 +1,15 @@
+package com.example.project.infraestructure.repository;
+
+import com.example.project.infrastructure.entity.ProjectEntity;
+import io.quarkus.hibernate.reactive.panache.PanacheQuery;
+import io.quarkus.hibernate.reactive.panache.PanacheRepositoryBase;
+import jakarta.enterprise.context.ApplicationScoped;
+
+
+@ApplicationScoped
+public class PanacheProjectEntityRepository implements PanacheRepositoryBase<ProjectEntity, Long> {
+
+    public PanacheQuery<ProjectEntity> findAllWithTasks() {
+        return find("select p from ProjectEntity p left join fetch p.tasks");
+    }
+}

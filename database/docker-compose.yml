@@ -1,0 +1,19 @@
+services:
+  example-mysql:
+    image: mysql:latest
+    container_name: 'example-mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: America/Lima
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
+      MYSQL_DATABASE: example
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./mysql-volumes:/var/lib/mysql
+    networks:
+      - example_network
+networks:
+  example_network:
+
