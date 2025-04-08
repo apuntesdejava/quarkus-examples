@@ -1,4 +1,4 @@
-package com.example.project.infrastructure.repository;
+package com.example.project.infrastructure.repository.panache;
 
 import com.example.project.domain.model.Task;
 import com.example.project.domain.repository.TaskRepository;

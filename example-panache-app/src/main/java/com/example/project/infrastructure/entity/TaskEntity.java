@@ -29,7 +29,7 @@ public class TaskEntity {
         entity.setId(task.id());
         entity.setName(task.name());
         entity.setDescription(task.description());
-        entity.setProject(ProjectEntity.from(task.project()));
+//        entity.setProject(ProjectEntity.from(task.project()));
         entity.setStatus(task.status());
         return entity;
     }
