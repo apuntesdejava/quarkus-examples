@@ -1,4 +1,4 @@
-package com.example.project.infraestructure.repository;
+package com.example.project.infrastructure.repository;
 
 import com.example.project.domain.model.Project;
 import com.example.project.domain.model.Task;

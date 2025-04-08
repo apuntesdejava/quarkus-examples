@@ -1,26 +1,23 @@
-package com.example.project.infraestructure.repository;
+package com.example.project.infrastructure.repository;
 
 import com.example.project.domain.model.Task;
 import com.example.project.domain.repository.TaskRepository;
 import com.example.project.infrastructure.entity.TaskEntity;
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 
 @ApplicationScoped
-@Named("JpaTaskRepository")
-public class JpaTaskRepository implements TaskRepository {
+@Named("PanacheTaskRepository")
+public class PanacheTaskRepository implements TaskRepository {
 
     @Inject
-    EntityManager em;
+    PanacheTaskEntityRepository repository;
 
     @Override
-    @Transactional
-    public Task persist(Task task) {
+    public Uni<Task> persist(Task task) {
         var taskEntity = TaskEntity.from(task);
-        em.persist(taskEntity);
-        return Task.fromEntity(taskEntity);
+        return repository.persist(taskEntity).map(Task::fromEntity);
     }
 }
